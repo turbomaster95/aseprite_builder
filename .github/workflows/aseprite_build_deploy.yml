@@ -80,8 +80,7 @@ jobs:
           unzip Skia-${{ runner.os }}-Release-X64.zip -d skia
       - name: Download Aseprite release
         run: |
-          curl -o Aseprite-source.zip -L ${{ needs.check-version.outputs.download_url }}
-          unzip Aseprite-source.zip -d aseprite
+          git clone --recursive --depth 1 https://github.com/aseprite/aseprite
           mkdir -p aseprite/build
       - name: (Windows) Setting Visual Studio build environment variables and paths
         if: matrix.os == 'windows-latest'
